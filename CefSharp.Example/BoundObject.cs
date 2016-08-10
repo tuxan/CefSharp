@@ -7,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CefSharp.ModelBinding;
 
 namespace CefSharp.Example
 {
@@ -66,31 +67,18 @@ namespace CefSharp.Example
             });
         }
 
-        public string TestCallbackFromObject(object obj)
+        public string TestCallbackFromObject(SimpleClass simpleClass)
         {
-            IJavascriptCallback javascriptCallback = null;
-
-            if (obj != null && obj is IDictionary)
+            if (simpleClass == null)
             {
-                Dictionary<string, object> d = new Dictionary<string, object>((IDictionary<string, object>) obj);
+                return "TestCallbackFromObject dictionary param is null";
+            }
 
-                object objCallback = null;
+            IJavascriptCallback javascriptCallback = simpleClass.Callback;
 
-                if (d.TryGetValue("callback", out objCallback))
-                {
-                    if (objCallback is IJavascriptCallback)
-                    {
-                        javascriptCallback = (IJavascriptCallback)objCallback;
-                    }
-                    else
-                    {
-                        return "callback property is not a function";
-                    }
-                }
-                else
-                {
-                    return "callback property not found";
-                }
+            if(javascriptCallback == null)
+            {
+                return "callback property not found or property is not a function";
             }
 
             const int taskDelay = 1500;
@@ -103,7 +91,7 @@ namespace CefSharp.Example
                 {
                     using (javascriptCallback)
                     {
-                        await javascriptCallback.ExecuteAsync("message from C#");
+                        await javascriptCallback.ExecuteAsync("message from C# " + simpleClass.TestString + " - " + simpleClass.SubClasses[0].PropertyOne);
                     }
                 }
             });

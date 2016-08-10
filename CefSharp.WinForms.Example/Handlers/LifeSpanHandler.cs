@@ -112,17 +112,21 @@ namespace CefSharp.WinForms.Example.Handlers
 
         void ILifeSpanHandler.OnAfterCreated(IWebBrowser browserControl, IBrowser browser)
         {
-            
+
         }
 
         bool ILifeSpanHandler.DoClose(IWebBrowser browserControl, IBrowser browser)
         {
-            return false;
+
+            //The default CEF behaviour (return false) will send a OS close notification (e.g. WM_CLOSE).
+            //See the doc for this method for full details.
+            //return true here to handle closing yourself (no WM_CLOSE will be sent).
+            return true;
         }
 
         public void OnBeforeClose(IWebBrowser browserControl, IBrowser browser)
         {
-            
+
         }
     }
 }
