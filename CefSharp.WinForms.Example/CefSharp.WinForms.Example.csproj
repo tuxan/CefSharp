@@ -21,7 +21,7 @@
     <OldToolsVersion>3.5</OldToolsVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <TargetFrameworkProfile />
-    <NuGetPackageImportStamp>975dc66a</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>9f89773d</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <PlatformTarget>x64</PlatformTarget>
@@ -85,6 +85,7 @@
     <Compile Include="Handlers\KeyboardHandler.cs" />
     <Compile Include="Handlers\LifeSpanHandler.cs" />
     <Compile Include="Handlers\MenuHandler.cs" />
+    <Compile Include="Handlers\WinFormsBrowserProcessHandler.cs" />
     <Compile Include="Handlers\WinFormsRequestHandler.cs" />
     <Compile Include="InputBox.cs">
       <SubType>Form</SubType>
@@ -182,6 +183,6 @@
   <Import Project="$(SolutionDir)\CefSharp.Native.props" />
   <Import Project="..\packages\cef.redist.x64.3.2272.30\build\cef.redist.x64.targets" Condition="Exists('..\packages\cef.redist.x64.3.2272.30\build\cef.redist.x64.targets')" />
   <Import Project="..\packages\cef.redist.x86.3.2272.30\build\cef.redist.x86.targets" Condition="Exists('..\packages\cef.redist.x86.3.2272.30\build\cef.redist.x86.targets')" />
-  <Import Project="..\packages\cef.redist.x64.3.2743.1441\build\cef.redist.x64.targets" Condition="Exists('..\packages\cef.redist.x64.3.2743.1441\build\cef.redist.x64.targets')" />
-  <Import Project="..\packages\cef.redist.x86.3.2743.1441\build\cef.redist.x86.targets" Condition="Exists('..\packages\cef.redist.x86.3.2743.1441\build\cef.redist.x86.targets')" />
+  <Import Project="..\packages\cef.redist.x64.3.2785.1478\build\cef.redist.x64.targets" Condition="Exists('..\packages\cef.redist.x64.3.2785.1478\build\cef.redist.x64.targets')" />
+  <Import Project="..\packages\cef.redist.x86.3.2785.1478\build\cef.redist.x86.targets" Condition="Exists('..\packages\cef.redist.x86.3.2785.1478\build\cef.redist.x86.targets')" />
 </Project>

@@ -33,7 +33,7 @@ namespace CefSharp.Example
         private static readonly bool DebuggingSubProcess = Debugger.IsAttached;
         private static string PluginInformation = "";
 
-        public static void Init(bool osr, bool multiThreadedMessageLoop)
+        public static void Init(bool osr, bool multiThreadedMessageLoop, IBrowserProcessHandler browserProcessHandler)
         {
             // Set Google API keys, used for Geolocation requests sans GPS.  See http://www.chromium.org/developers/how-tos/api-keys
             // Environment.SetEnvironmentVariable("GOOGLE_API_KEY", "");
@@ -88,6 +88,7 @@ namespace CefSharp.Example
             //settings.CefCommandLineArgs.Add("disable-direct-write", "1");
 
             settings.MultiThreadedMessageLoop = multiThreadedMessageLoop;
+            settings.ExternalMessagePump = !multiThreadedMessageLoop;
 
             // Off Screen rendering (WPF/Offscreen)
             if(osr)
@@ -98,13 +99,8 @@ namespace CefSharp.Example
                 //settings.CefCommandLineArgs.Add("disable-surfaces", "1");
                 settings.EnableInternalPdfViewerOffScreen();
 
-                var osVersion = Environment.OSVersion;
-                //Disable GPU for Windows 7
-                if(osVersion.Version.Major == 6 && osVersion.Version.Minor == 1)
-                {
-                    // Disable GPU in WPF and Offscreen examples until #1634 has been resolved
-                    settings.CefCommandLineArgs.Add("disable-gpu", "1");
-                }
+                //Disable Direct Composition to test https://github.com/cefsharp/CefSharp/issues/1634
+                //settings.CefCommandLineArgs.Add("disable-direct-composition", "1");
                 
                 // DevTools doesn't seem to be working when this is enabled
                 // http://magpcss.org/ceforum/viewtopic.php?f=6&t=14095
@@ -166,7 +162,7 @@ namespace CefSharp.Example
 
             settings.FocusedNodeChangedEnabled = true;
 
-            if (!Cef.Initialize(settings, performDependencyCheck: !DebuggingSubProcess, browserProcessHandler: new BrowserProcessHandler()))
+            if (!Cef.Initialize(settings, performDependencyCheck: !DebuggingSubProcess, browserProcessHandler: browserProcessHandler))
             {
                 throw new Exception("Unable to Initialize Cef");
             }
