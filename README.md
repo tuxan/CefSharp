@@ -26,6 +26,7 @@ Stable binaries are released on NuGet, and contain everything you need  to embed
 * See the [Wiki](https://github.com/cefsharp/CefSharp/wiki) for work-in-progress documentation
 * See the [FAQ](https://github.com/cefsharp/CefSharp/wiki/Frequently-asked-questions) for help with common issues 
 * Upgrading from an earlier version of CefSharp? See the [ChangeLog](https://github.com/cefsharp/CefSharp/wiki/ChangeLog) for breaking changes and upgrade tips.
+* [CefSharp API](http://cefsharp.github.io/api/51.0.0/) generated from the souce code comments.
 
 ## Contact
 
@@ -59,8 +60,8 @@ Every commit on `master` produces a `Nuget` package. Use at your own risk! [CefS
 | Branch | CEF Version | VC++ Version | .Net Version | Status |
 |--------|-------------|--------------|--------------|--------|
 | [master](https://github.com/cefsharp/CefSharp/) | 2785 | 2013 | 4.5.2 | Development |
-| [cefsharp/53](https://github.com/cefsharp/CefSharp/tree/cefsharp/53) | 2785 | 2013 | 4.5.2 | **Pre-Release** |
-| [cefsharp/51](https://github.com/cefsharp/CefSharp/tree/cefsharp/51) | 2704 | 2013 | 4.5.2 | **Release** |
+| [cefsharp/53](https://github.com/cefsharp/CefSharp/tree/cefsharp/53) | 2785 | 2013 | 4.5.2 | **Release** |
+| [cefsharp/51](https://github.com/cefsharp/CefSharp/tree/cefsharp/51) | 2704 | 2013 | 4.5.2 | Unsupported |
 | [cefsharp/49](https://github.com/cefsharp/CefSharp/tree/cefsharp/49) | 2623 | 2013 | 4.0   | Unsupported |
 | [cefsharp/47](https://github.com/cefsharp/CefSharp/tree/cefsharp/47) | 2526 | 2013 | 4.0   | Unsupported |
 | [cefsharp/45](https://github.com/cefsharp/CefSharp/tree/cefsharp/45) | 2454 | 2013 | 4.0   | Unsupported |
